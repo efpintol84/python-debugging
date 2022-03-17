@@ -5,7 +5,7 @@
 import sys
 
 
-def area_of_rectangle(height, width = None):
+def area_of_rectangle(height, width):
     """
     Returns the area of a rectangle.
 
@@ -24,28 +24,32 @@ def area_of_rectangle(height, width = None):
 
     Examples
     --------
-    >>> area_of_rectangle(7)
+    >>> area_of_square(7)
     49
     >>> area_of_rectangle (7, 2)
     14
     """
-    if width:
+    if width == None:
         width = height
-    import pdb; pdb.set_trace()
-    area = height * width
+    area = int(height) * int(width)
+    area = int(area)
     return area
 
 if __name__ == '__main__':
-    if (len(sys.argv) < 2) or (len(sys.argv) > 3):
-        message = (
-                "{script_name}: Expecting one or two command-line arguments:\n"
-                "\tthe height of a square or the height and width of a "
-                "rectangle".format(script_name = sys.argv[0]))
-        sys.exit(message)
-    height = sys.argv[1]
-    width = height
-    if len(sys.argv) > 3:
-        width = sys.argv[1]
+    for x in sys.argv:
+        if (len(sys.argv) < 2) or (len(sys.argv) > 3):
+            message = (
+                    "{script_name}: Expecting one or two command-line arguments:\n"
+                    "\tthe height of a square or the height and width of a "
+                    "rectangle".format(script_name = sys.argv[0]))
+            sys.exit(message)
+        if len(sys.argv) == 1:
+             height = sys.argv[1]
+             width = height
+             continue
+        else:
+             height = sys.argv[1]
+             width = sys.argv[2]
 
     area = area_of_rectangle(height, width)
 
